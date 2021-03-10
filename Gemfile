@@ -45,3 +45,5 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
 end
+
+gem 'aws-sdk-s3', require: false
