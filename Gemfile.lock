@@ -265,6 +265,7 @@ DEPENDENCIES
   rails (~> 6.1.3)
   rspec-rails
   spring
+  sprockets-rails
   tzinfo-data
   web-console (>= 4.1.0)
 

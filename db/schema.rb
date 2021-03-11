@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_121640) do
+ActiveRecord::Schema.define(version: 2021_03_10_150302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_121640) do
 
   create_table "audios", force: :cascade do |t|
     t.string "name"
-    t.integer "attachment_id"
     t.integer "revision"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +53,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_121640) do
 
   create_table "images", force: :cascade do |t|
     t.string "name"
-    t.integer "attachment_id"
     t.integer "revision"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_121640) do
 
   create_table "videos", force: :cascade do |t|
     t.string "name"
-    t.integer "attachment_id"
     t.integer "revision"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

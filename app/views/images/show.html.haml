@@ -1,0 +1,5 @@
+%p
+= @image.word.wordform
+= @image.revision
+= image_tag(@image.attachment, width: 200) if @image.attachment.attached?
+= link_to 'Back', words_path

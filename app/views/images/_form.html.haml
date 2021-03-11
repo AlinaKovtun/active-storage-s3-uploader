@@ -1,0 +1,5 @@
+= form_for [@word, @image] do |form|
+  %p.text-left.h5
+    = form.file_field :attachment
+  .actions
+    = form.submit

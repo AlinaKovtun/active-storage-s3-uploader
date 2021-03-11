@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :words
+  resources :words do
+    resources :images
+  end
 end

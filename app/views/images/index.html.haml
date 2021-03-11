@@ -1,0 +1,13 @@
+%h1 Images
+%table
+  %thead
+    %tr
+      %th image
+    %tbody
+    - @images.each do |image|
+      %tr
+      %td= image_tag image.attachment
+      %td= image.word.wordform
+      %td= image.revision
+%br/
+= link_to "New Image", word_images_path
