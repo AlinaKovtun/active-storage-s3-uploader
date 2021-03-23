@@ -1,0 +1,1 @@
+json.partial! "videos/video", image: @video

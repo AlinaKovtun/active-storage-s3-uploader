@@ -1,0 +1,13 @@
+%h1 Videos
+%table
+  %thead
+    %tr
+      %th video
+    %tbody
+    - @videos.each do |video|
+      %tr
+      %td= video_tag video.attachment
+      %td= video.word.wordform
+      %td= video.revision
+%br/
+= link_to "New Image", word_videos_path
