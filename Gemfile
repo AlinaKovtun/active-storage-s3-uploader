@@ -49,4 +49,6 @@ end
 gem 'aws-sdk-s3', require: false
 gem "haml-rails", "~> 2.0"
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-
+gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'simple_form'
