@@ -1,30 +1,21 @@
 class VideosController < ApplicationController
-  before_action :set_word, only: [:index, :new, :create]
+  before_action :find_word, only: [:index, :create]
+  before_action :set_video, only: [:show, :destroy]
+
+  def index
+    @videos = @word.videos.all
+  end
+
+  def show
+  end
 
   def new
     @word = Word.find(params[:word_id])
-    @video = @word.videos.build
+    @video = Video.new(:word_id => params[:word_id])
   end
 
   def create
-    binding.pry
-    @word.images.build(image_params.merge(revision: revision))
-
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to @word, notice: "New revision was successfully created." }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @images.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def create
-    @video = Video.new(video_params.merge(revision: revision))
-
-    # @word.images.build(image_params.merge(revision: revision))
+    @word.videos.build(video_params.merge(revision: revision))
 
     respond_to do |format|
       if @word.save
@@ -37,14 +28,31 @@ class VideosController < ApplicationController
     end
   end
 
-  private
+  def edit
+  end
 
-    def set_word
+  def update
+  end
+
+  def destroy
+    @video.destroy
+    respond_to do |format|
+      format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    def find_word
       @word = Word.find(params[:word_id])
     end
 
+    def set_video
+      @video = Video.find(params[:id])
+    end
+
     def video_params
-      params.require(:video).permit(:attachment, :word_id)
+      params.require(:video).permit(:attachment)
     end
 
     def revision

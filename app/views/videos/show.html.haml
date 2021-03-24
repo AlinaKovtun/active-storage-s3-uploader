@@ -1,5 +1,5 @@
 %p
 = @video.word.wordform
 = @video.revision
-= image_tag(@video.attachment, width: 200) if @video.attachment.attached?
+= video_tag(@video.attachment, width: 200) if @video.attachment.attached?
 = link_to 'Back', words_path

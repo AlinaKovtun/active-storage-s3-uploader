@@ -1,5 +1,6 @@
-= form_for [@word, @video] do |form|
+= form_for [@word, @word.videos.build] do |form|
   %p.text-left.h5
     = form.file_field :attachment
+    = form.hidden_field :attachment_cache
   .actions
     = form.submit

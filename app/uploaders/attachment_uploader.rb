@@ -1,23 +1,28 @@
 class AttachmentUploader < CarrierWave::Uploader::Base
-  include CarrierWaveDirect::Uploader
+  # include CarrierWaveDirect::Uploader
+  # include CarrierWave::Video
+  # include CarrierWave::FFmpeg
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  # def store_dir
-  #   "uploads/images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  def store_dir
+    "#{wordform}/#{attachment_type}/#{revision}"
+  end
+
+  # def cache_dir
+  #   "#{wordform}/#{attachment_type}/#{revision}"
   # end
 
-  def store_path(for_file = filename)
-    binding.pry
-    # "#{wordform}/#{attachment_type.pluralize}/#{revision}/#{filename}"
-  end
+  # def store_path(for_file = filename)
+  #   "#{wordform}/#{attachment_type}/#{revision}/#{filename}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -42,31 +47,25 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png mp4)
   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "#{secure_token(10)}.#{file.extension}" if original_filename.present?
-  end
-
+  # def filename
+  #   "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  # end
+  #
   private
     def wordform
-
+      model.word.wordform.downcase
     end
 
     def attachment_type
-
+      model.class.to_s.downcase.pluralize
     end
 
     def revision
-
+      model.revision.to_s
     end
-
-    # %w[image video audio].each do |type|
-    #   define_method "#{type}?" do
-    #     model.is_a?(&:"#{type}")
-    #   end
-    # end
 end
