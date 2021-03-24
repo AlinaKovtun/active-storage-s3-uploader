@@ -44,11 +44,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'pry-rails'
 end
 
 gem 'aws-sdk-s3', require: false
 gem "haml-rails", "~> 2.0"
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'carrierwave'
-gem 'carrierwave_direct'
+# gem 'carrierwave_direct'
+gem 'carrierwave-aws'
+gem 'carrierwave-video'
+gem 'fog-aws'
 gem 'simple_form'

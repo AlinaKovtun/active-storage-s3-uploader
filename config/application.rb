@@ -13,6 +13,7 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "active_support/inflector"
+require "carrierwave/video"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
